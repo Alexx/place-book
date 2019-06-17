@@ -34,16 +34,21 @@ function displayPlaces(locationsBeen) {
   for (var i = 0; i < locationsBeen.places.length; i++) {
     var thing = locationsBeen.places[i].city;
     console.log(thing);
-    $("#cities").append("<li value=" + i+ ">" + locationsBeen.places[i].city  + "</li><ul></ul>");
+    $("#cities").append("<li value=" + i + ">" + locationsBeen.places[i].city  + "</li>");
   }
 }
 
 //when user clicks on the name it shows all info
 function showInfo(placeHolder) {
+  $("p").text("")
   console.log(locationsBeen.places[placeHolder]);
-  //$("ul li ul:nth-child(0)").append("<li>" + locationsBeen.places[placeHolder].city + "</li>")
-  $("li:nth-child(" + placeHolder + 1 + ")").text("<li>" + "city" + "</li>")
-}
+  console.log(placeHolder);
+  // $("ul li ul:nth-child(1)").append("<li>" + locationsBeen.places[placeHolder].city + "</li>");
+  $("p").append("<ul><li>" + locationsBeen.places[placeHolder].city + ", " +
+    locationsBeen.places[placeHolder].state + "</li><li>" +
+    locationsBeen.places[placeHolder].landmark + "</li><li>" +
+    locationsBeen.places[placeHolder].date + "</li></ul>");
+};
 
 //creates a new instance of PlacesBeen to store all the places
 var locationsBeen = new PlacesBeen();
@@ -53,9 +58,6 @@ locationsBeen.addPlace(place1);
 locationsBeen.addPlace(place2);
 locationsBeen.addPlace(place3);
 locationsBeen.addPlace(place4);
-
-
-
 
 $(document).ready(function() {
 
